@@ -1,0 +1,31 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Mã Sinh Viên</th>
+        <th scope="col">Tên Sinh Viên</th>
+        <th scope="col">Địa Chỉ Nhà</th>
+        <th scope="col">Giới tính</th>
+        <th scope="col">Ngày Sinh</th>
+        <th scope="col">CMND</th>
+        <th scope="col">Khoa Đào Tạo</th>
+        <th scope="col">Chuyên Ngành</th>
+        <th scope="col">Thao Tác</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let index of arraySinhVien; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{index.id}}</td>
+        <td >{{index.name}}</td>
+        <td>{{index.addrect}}</td>
+        <td>{{index.sex}}</td>
+        <td>{{index.dob}}</td>
+        <td>{{index.cmnd}}</td>
+        <td>{{index.faculty}}</td>
+        <td>{{index.mainfaculty}}</td>
+        <td scope="row"><a [routerLink] ="['/chitiet', index.id]" ><i class="fa fa-eye pr-2 poiter"></i> </a><button (click) = "goToPage()" ><i class="fa fa-pencil pr-2 poiter"></i></button>  <i class="fa fa-trash-o"></i></td>
+      </tr>
+      
+    </tbody>
+  </table>

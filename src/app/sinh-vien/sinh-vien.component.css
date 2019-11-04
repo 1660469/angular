@@ -1,0 +1,14 @@
+tr th{
+    background: rgb(245, 170, 30);
+    color: white;
+    font-size: 12px;
+}
+tr:hover{
+    background: yellow;
+}
+i.fa-pencil{
+    color: green;
+}
+.poiter{
+    pointer-events: auto;
+}
