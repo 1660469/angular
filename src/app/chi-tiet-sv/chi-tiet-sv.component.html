@@ -13,7 +13,7 @@
                     <label>Mã Sinh Viên</label>
                 </div>
                 <div class="col-lg-6">
-                    <input type="text" [(ngModel)] = "sinhVien.id">
+                    <input disabled [(ngModel)] = "sinhVien.id">
                 </div>
             </div>
             <div class="row">
@@ -21,7 +21,7 @@
                     <label>Tên Sinh Viên</label>
                 </div>
                 <div class="col-lg-6">
-                    <input type="text" [(ngModel)] = "sinhVien.name" >
+                    <input type="text" disabled [(ngModel)] = "sinhVien.name" >
                 </div>
                
             </div>
@@ -30,7 +30,7 @@
                     <label>Địa chỉ</label>
                 </div>
                 <div class="col-lg-6">
-                    <input type="text" [(ngModel)] = "sinhVien.addrect">
+                    <input type="text" disabled [(ngModel)] = "sinhVien.addrect">
                 </div>
             </div>
             <div class="row">
@@ -38,7 +38,7 @@
                     <label>Giới tính</label>
                 </div>
                 <div class="col-lg-6">
-                    <input type="text" [(ngModel)] = "sinhVien.sex">
+                    <input type="text" disabled [(ngModel)] = "sinhVien.sex">
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
                     <label>Ngày Sinh</label>
                 </div>
                 <div class="col-lg-6">
-                    <input type="text" [(ngModel)] = "sinhVien.dob">
+                    <input type="text" disabled [(ngModel)] = "sinhVien.dob">
                 </div>
             </div>
             <div class="row">
@@ -56,7 +56,7 @@
                     <label>Chứng Minh Nhân Dân</label>
                 </div>
                 <div class="col-lg-6">
-                    <input type="text" [(ngModel)] = "sinhVien.cmnd">
+                    <input type="text" disabled [(ngModel)] = "sinhVien.cmnd">
                 </div>
             </div>
             <div class="row">
@@ -64,7 +64,7 @@
                     <label>Khoa Đào Tạo</label>
                 </div>
                 <div class="col-lg-6">
-                    <input type="text" [(ngModel)] = "sinhVien.faculty">
+                    <input type="text" disabled [(ngModel)] = "sinhVien.faculty">
                 </div>
             </div>
             <div class="row">
@@ -72,14 +72,10 @@
                     <label>Chuyên Ngành</label>
                 </div>
                 <div class="col-lg-6">
-                    <input type="text"[(ngModel)] = "sinhVien.mainfaculty">
+                    <input type="text" disabled [(ngModel)] = "sinhVien.mainfaculty">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <button (click) = "saveData();">Save</button>
-                </div>
-            </div>
+            
         </div>
     </div>
     

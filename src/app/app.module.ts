@@ -14,6 +14,7 @@ import { SinhVienComponent } from './sinh-vien/sinh-vien.component';
 import { ChiTietSVComponent } from './chi-tiet-sv/chi-tiet-sv.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SinhvienService } from './sinhvien.service';
+import { FormchitietsvComponent } from './formchitietsv/formchitietsv.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { SinhvienService } from './sinhvien.service';
     FormComponent,
     SinhVienComponent,
     ChiTietSVComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FormchitietsvComponent
   ],
   imports: [
     BrowserModule,

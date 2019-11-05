@@ -12,11 +12,16 @@ export class SinhVienComponent implements OnInit {
   constructor(
     private sinhvienService: SinhvienService, private router: Router
   ) { }
-  
+
   ngOnInit() {
     this.arraySinhVien = this.sinhvienService.arraySinhVien;
   }
-  // goToPage = function(){
-  //   this.router.navigateByUrl(['/chitiet/2']);
-  // }
+  deleteObject(index: number) {
+    this.sinhvienService.arraySinhVien.find((x, indexItem) => {
+      if (indexItem === index) {
+        this.sinhvienService.arraySinhVien.splice(index, 1);
+      }
+    }
+    );
+  }
 }
