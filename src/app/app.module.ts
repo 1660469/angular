@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import {ModalModule} from 'ng2-modal';
 import {Routes, RouterModule} from '@angular/router';
 
 
@@ -15,7 +15,8 @@ import { ChiTietSVComponent } from './chi-tiet-sv/chi-tiet-sv.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SinhvienService } from './sinhvien.service';
 import { FormchitietsvComponent } from './formchitietsv/formchitietsv.component';
-
+import { ChildrenFormctsvComponent } from './children-formctsv/children-formctsv.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,14 +26,17 @@ import { FormchitietsvComponent } from './formchitietsv/formchitietsv.component'
     SinhVienComponent,
     ChiTietSVComponent,
     PageNotFoundComponent,
-    FormchitietsvComponent
+    FormchitietsvComponent,
+    ChildrenFormctsvComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AlertModule.forRoot(),
     FormsModule,
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule,
+    ModalModule
   ],
   providers: [
     SinhvienService

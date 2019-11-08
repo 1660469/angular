@@ -22,8 +22,8 @@
         <td>{{item.sex}}</td>
         <td>{{item.dob}}</td>
         <td>{{item.cmnd}}</td>
-        <td>{{item.faculty}}</td>
-        <td>{{item.mainfaculty}}</td>
+        <td>{{item?.faculty?.name}}</td>
+        <td>{{item?.mainfaculty?.name}}</td>
         <td scope="row"><a [routerLink] ="['/chitiet', item.id]" ><i class="fa fa-eye pr-2 poiter"></i> </a><a [routerLink] ="['/edit', item.id]"><i class="fa fa-pencil pr-2 poiter"></i></a><a (click) = "deleteObject(i)"><i class="fa fa-trash-o"></i></a></td>
       </tr>
       

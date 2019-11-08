@@ -9,3 +9,12 @@ label{
 .row{
     padding: 15px;
 }
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(27, 25, 25, 0);
+    opacity: 1;
+    display: block;
+    background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat;
+    width: 20px;
+    height: 20px;
+    border-width: thin;
+}

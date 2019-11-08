@@ -6,6 +6,13 @@ export class SinhVien1 {
         public sex: string,
         public dob: string,
         public cmnd: number,
-        public faculty: string,
-        public mainfaculty: string) { }
+        public faculty: {
+            id: number,
+            name: string,
+        },
+        public mainfaculty: {
+            id: number,
+            name: string,
+            parentId: number
+        }) { }
 }

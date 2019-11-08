@@ -1,0 +1,15 @@
+<!-- <p>children-formctsv works!</p>
+{{fatherName}} -->
+<button (click)="openModal('custom-modal-1')">Open Modal 1</button>
+<modal id="custom-modal-1">
+    <div class="modal">
+        <div class="modal-body">
+            <h1>A Custom Modal!</h1>
+            <p>
+                Home page text: <input type="text"  />
+            </p>
+            <button (click)="closeModal('custom-modal-1');">Close</button>
+        </div>
+    </div>
+    <div class="modal-background"></div>
+</modal>
