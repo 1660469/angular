@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {ModalModule} from 'ng2-modal';
+// ModalModule
 import {Routes, RouterModule} from '@angular/router';
 
 
- import { AlertModule } from 'ngx-bootstrap';
+// AlertModule
 import { StudentComponent } from './student/student.component';
 import { FormComponent } from './form/form.component';
 import { SinhVienComponent } from './sinh-vien/sinh-vien.component';
@@ -17,6 +17,8 @@ import { SinhvienService } from './sinhvien.service';
 import { FormchitietsvComponent } from './formchitietsv/formchitietsv.component';
 import { ChildrenFormctsvComponent } from './children-formctsv/children-formctsv.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalService } from './modal.service';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -27,19 +29,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ChiTietSVComponent,
     PageNotFoundComponent,
     FormchitietsvComponent,
-    ChildrenFormctsvComponent
+    ChildrenFormctsvComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AlertModule.forRoot(),
+    // AlertModule.forRoot(),
     FormsModule,
     RouterModule,
     BrowserAnimationsModule,
-    ModalModule
+    // ModalModule
   ],
   providers: [
-    SinhvienService
+    SinhvienService,
+    ModalService
   ],
   bootstrap: [AppComponent]
 })
