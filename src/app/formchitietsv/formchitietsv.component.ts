@@ -18,13 +18,12 @@ export class FormchitietsvComponent implements OnInit {
   }
   ngOnInit() {
     this.Id = +this.route.snapshot.paramMap.get('id');
-    console.log('chitiet.arrayFaculty', this.chitiet.arrayFaculty);
     this.sinhVienForm = this.chitiet.arraySinhVien.find(x => x.id === this.Id);
-    this.facultyChange(1);
-    console.log(this.chitiet.arrayFaculty);
+    this.facultyChange();
+    this.chitiet.idKhoa = this.sinhVienForm.faculty.id;
   }
   saveData = function () {
-    console.log('item', this.sinhVienForm)
+    console.log('item', this.sinhVienForm);
     this.chitiet.arraySinhVien.some(x => {
       if (x.id === this.Id) {
         x = this.sinhVienForm;
@@ -44,12 +43,14 @@ export class FormchitietsvComponent implements OnInit {
     }
     return true;
   }
-  facultyChange(e: number) {
+  facultyChange() {
     this.departments = this.chitiet.arrayMainFaculty.filter(x => x.parentId === this.sinhVienForm.faculty.id);
+    this.chitiet.idKhoa = this.sinhVienForm.faculty.id;
+    console.log('this.chitiet.idKhoa', this.chitiet.idKhoa);
   }
 
   compareFn(c1: any, c2: any): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
-  
+
 }

@@ -1,15 +1,15 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewChecked, AfterViewInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { SinhvienService } from '../sinhvien.service';
 import { SinhVien1 } from '../sinh-vien1';
 
-@Component({
+@Component( {
   selector: 'app-children-formctsv',
   templateUrl: './children-formctsv.component.html',
   styleUrls: ['./children-formctsv.component.css']
-})
-export class ChildrenFormctsvComponent implements OnInit {
-  @ViewChild('add', { static: false }) add: ElementRef;
+} )
+export class ChildrenFormctsvComponent implements OnInit, AfterViewInit {
+  @ViewChild( 'add', { static: false } ) add: ElementRef;
   arrayError = {
     khoatxt: '',
   };
@@ -19,94 +19,76 @@ export class ChildrenFormctsvComponent implements OnInit {
   mainFacultyForm: FormGroup;
   formArray: FormArray;
   formGroup: FormGroup;
-  constructor(private chitiet: SinhvienService, private formBuilder: FormBuilder, private renderer: Renderer2) {
+  constructor ( private chitiet: SinhvienService, private formBuilder: FormBuilder, private renderer: Renderer2 ) {
   }
   get formArrayFn(): FormArray {
-    return this.formGroup.get('array') as FormArray;
+    return this.formGroup.get( 'array' ) as FormArray;
   }
   ngOnInit() {
-    // this.facultyForm.valueChanges.subscribe(data => {
-    //   console.log(this.facultyForm);
-    //   //this.vaidateForm();
-    // })
-    this.facultyForm = this.formBuilder.group({
-      khoatxt: [null, Validators.required],
-      desFaculty: [null, Validators.required],
-    });
-    const formGroupChild = this.formBuilder.group({
-      mainFacultytxt: [null, Validators.required],
-      desMainFacultytxt: [null, Validators.required],
-    });
-    this.formGroup = this.formBuilder.group({
-      array: this.formBuilder.array([formGroupChild]),
-    });
-    console.log('this.for', this.formGroup);
-    //  = this.formBuilder.group({
-    //   mainFacultytxt: [null, Validators.required],
-    //   desMainFacultytxt: [null, Validators.required],
-    //   items: this.formBuilder.array([this.createItem()])
-    // });
+    this.formGroup = this.formBuilder.group( {
+      array: this.formBuilder.array( [] ),
+    } );
   }
-  // createItem(): FormGroup{
-  //   return this.formBuilder.group({
-  //     khoatxt: [null, Validators.required],
-  //     desFaculty: [null, Validators.required],
-  //   });
-  // }
-  // addItem(){
-  //   this.items.push(this.createItem());
-  // }
+
+  createFormGroup( data: any ): FormGroup {
+    const formGroup = this.formBuilder.group( {
+      mainFacultytxt: [data.name, Validators.required],
+      desMainFacultytxt: [data.desc, Validators.required],
+    } );
+    return formGroup;
+  }
+
   duplicate() {
-    const formGroupChild = this.formBuilder.group({
+    const formGroupChild = this.formBuilder.group( {
       mainFacultytxt: [null, Validators.required],
       desMainFacultytxt: [null, Validators.required],
-    });
-    (this.formGroup.get('array') as FormArray).controls.push(formGroupChild);
+    } );
+    ( this.formGroup.get( 'array' ) as FormArray ).controls.push( formGroupChild );
   }
-  subFormGroupItem(index: number) {
+  subFormGroupItem( index: number ) {
     // (this.formGroup.get('array') as FormArray).removeAt(index);
-    (this.formGroup.get('array') as FormArray).controls.splice(index, 1)  ;
+    ( this.formGroup.get( 'array' ) as FormArray ).controls.splice( index, 1 );
   }
   addFaculty() {
-    if (this.facultyForm.valid) {
-      console.log('form ok');
+    if ( this.facultyForm.valid ) {
+      console.log( 'form ok' );
       const getValueKhoatxt = this.facultyForm.value.khoatxt;
       const getValueDesFaculty = this.facultyForm.value.desFaculty;
-      this.chitiet.arrayFaculty.push({
+      this.chitiet.arrayFaculty.push( {
         id: this.chitiet.arrayFaculty.length + 1,
         name: getValueKhoatxt,
         des: getValueDesFaculty
-      });
-      console.log('chitiet', this.chitiet.arrayFaculty);
+      } );
+      console.log( 'chitiet', this.chitiet.arrayFaculty );
     } else {
-      this.validateAllFields(this.facultyForm);
+      this.validateAllFields( this.facultyForm );
 
     }
-    document.getElementById('khoatxt').innerHTML = '';
-    document.getElementById('desFaculty').innerHTML = '';
+    document.getElementById( 'khoatxt' ).innerHTML = '';
+    document.getElementById( 'desFaculty' ).innerHTML = '';
 
 
   }
-  validateAllFields(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach(field => {
-      const control = formGroup.get(field);
-      if (control instanceof FormControl) {
-        control.markAsTouched({ onlySelf: true });
-      } else if (control instanceof FormGroup) {
-        this.validateAllFields(control);
+  validateAllFields( formGroup: FormGroup ) {
+    Object.keys( formGroup.controls ).forEach( field => {
+      const control = formGroup.get( field );
+      if ( control instanceof FormControl ) {
+        control.markAsTouched( { onlySelf: true } );
+      } else if ( control instanceof FormGroup ) {
+        this.validateAllFields( control );
       }
-    })
+    } )
   }
-  isFieldValid(field: string) {
+  isFieldValid( field: string ) {
     // debugger
     // return !this.facultyForm.get(field).valid && this.facultyForm.get(field).touched;
   }
 
-  displayFieldCss(field: string) {
+  displayFieldCss( field: string ) {
     //debugger
     return {
-      'has-error': this.isFieldValid(field),
-      'has-feedback': this.isFieldValid(field)
+      'has-error': this.isFieldValid( field ),
+      'has-feedback': this.isFieldValid( field )
     };
   }
   // vaidateForm() { 
@@ -119,7 +101,21 @@ export class ChildrenFormctsvComponent implements OnInit {
   //     }
   //   }
   // }
-  changeMainFaculty(){
-    this.changemainFaculty = this.chitiet.arrayMainFaculty.filter(x => x.parentId == this.MainFacultyArray.id);
+  changeMainFaculty() {
+    this.changemainFaculty = this.chitiet.arrayMainFaculty.filter( x => x.parentId == this.MainFacultyArray.id );
+  }
+
+  ngAfterViewInit() {
+    this.changemainFaculty = this.chitiet.arrayMainFaculty.filter( x => x.parentId === this.chitiet.idKhoa );
+    this.clearFormArray((this.formGroup.get('array') as FormArray));
+    this.changemainFaculty.forEach(item => {
+      (this.formGroup.get('array') as FormArray).push(this.createFormGroup( item ));
+    });
+  }
+
+  clearFormArray = (formArray: FormArray) => {
+    while (formArray.length !== 0) {
+      formArray.removeAt(0);
+    }
   }
 }

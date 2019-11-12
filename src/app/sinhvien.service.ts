@@ -4,7 +4,7 @@ import { SinhVien1 } from './sinh-vien1';
   providedIn: 'root'
 })
 export class SinhvienService {
-
+  idKhoa: number;
   constructor() { }
   arraySinhVien = [
     new SinhVien1(1, 'Quang', '247 Phan Chu Trinh', 'Nam', '1998-10-10', 241761142, { id: 2, name: 'DTVT' }, { id: 1, name: 'Điện', parentId: 2 }),
