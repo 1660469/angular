@@ -1,11 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // ModalModule
 import {Routes, RouterModule} from '@angular/router';
-
 
 // AlertModule
 import { StudentComponent } from './student/student.component';
@@ -19,6 +18,7 @@ import { ChildrenFormctsvComponent } from './children-formctsv/children-formctsv
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalService } from './modal.service';
 import { ModalComponent } from './modal/modal.component';
+import { AppFieldErrorDisplayComponent } from './app-field-error-display/app-field-error-display.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import { ModalComponent } from './modal/modal.component';
     PageNotFoundComponent,
     FormchitietsvComponent,
     ChildrenFormctsvComponent,
-    ModalComponent
+    ModalComponent,
+    AppFieldErrorDisplayComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +41,8 @@ import { ModalComponent } from './modal/modal.component';
     RouterModule,
     BrowserAnimationsModule,
     // ModalModule
+   // DialogModule,
+   ReactiveFormsModule
   ],
   providers: [
     SinhvienService,

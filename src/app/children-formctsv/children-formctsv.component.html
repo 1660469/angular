@@ -1,15 +1,80 @@
-<!-- <p>children-formctsv works!</p>
-{{fatherName}} -->
-<button (click)="openModal('custom-modal-1')">Open Modal 1</button>
-<modal id="custom-modal-1">
-    <div class="modal">
-        <div class="modal-body">
-            <h1>A Custom Modal!</h1>
-            <p>
-                Home page text: <input type="text"  />
-            </p>
-            <button (click)="closeModal('custom-modal-1');">Close</button>
-        </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thêm khoa đào tạo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <form [formGroup]="facultyForm">
+
+          <label class="pr-2">Nhập khoa đào tạo: </label><br>
+          <input type="text w-100" [ngClass]="displayFieldCss('khoatxt')" id="khoatxt" formControlName="khoatxt"
+            required>
+          <app-app-field-error-display [displayError]="isFieldValid('khoatxt')" errorMsg="*Hãy nhập tên khoa">
+          </app-app-field-error-display>
+
+          <br>
+          <label class="pr-2">Nhập mô tả khoa đào tạo: </label><br>
+          <input type="text" [ngClass]="displayFieldCss('desFaculty')" id="desFaculty" formControlName="desFaculty"
+            required>
+          <app-app-field-error-display [displayError]="isFieldValid('desFaculty')" errorMsg="*Hãy nhập mô tả khoa">
+          </app-app-field-error-display>
+        </form> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" (click)="addFaculty()" class="btn btn-primary">Save</button>
+      </div>
     </div>
-    <div class="modal-background"></div>
-</modal>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-lg" id="modalAddMainFaculty" tabindex="-1" role="dialog"
+  aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thêm chuyên ngành khoa đào tạo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="formGroup" class="modal-body">
+        <div formArrayName="array" *ngFor="let item of formArrayFn.controls; let i = index;">
+          <div [formGroupName]="i" (change)="changeMainFaculty()" *ngFor="let changemain of changemainFaculty">
+            <div class="row" >
+              <div class="col-lg-5 pr-2">
+                <span>{{i}}</span>
+                <label class=" pr-2">Nhập tên: </label>
+                <input type="text" class="pr-2" [ngClass]="displayFieldCss('mainFacultytxt')" id="mainFacultytxt"
+                  value="{{changemain.name}}" formControlName="mainFacultytxt" required>
+                <app-app-field-error-display [displayError]="isFieldValid('mainFacultytxt')"
+                  errorMsg="*Hãy nhập tên chuyên ngành">
+                </app-app-field-error-display>
+              </div>
+              <div class="col-lg-5 pr-2">
+                <label class="pr-2">Nhập mô tả: </label>
+                <input type="text" [ngClass]="displayFieldCss('desMainFacultytxt')" id="desMainFacultytxt"
+                  formControlName="desMainFacultytxt" required>
+                <app-app-field-error-display [displayError]="isFieldValid('desMainFacultytxt')"
+                  errorMsg="*Hãy nhập mô tả chuyên ngành">
+                </app-app-field-error-display>
+              </div>
+              <div class="another-test" #add></div>
+              <button (click)="duplicate()">add</button>
+              <button (click)="subFormGroupItem(i)">sub</button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
